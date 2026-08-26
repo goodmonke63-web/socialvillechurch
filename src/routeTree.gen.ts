@@ -12,6 +12,7 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as MinistriesRouteImport } from './routes/ministries'
+import { Route as ReviewsRouteImport } from './routes/reviews'
 import { Route as VisitRouteImport } from './routes/visit'
 
 const IndexRoute = IndexRouteImport.update({
@@ -29,6 +30,11 @@ const MinistriesRoute = MinistriesRouteImport.update({
   path: '/ministries',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ReviewsRoute = ReviewsRouteImport.update({
+  id: '/reviews',
+  path: '/reviews',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const VisitRoute = VisitRouteImport.update({
   id: '/visit',
   path: '/visit',
@@ -39,12 +45,14 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/ministries': typeof MinistriesRoute
+  '/reviews': typeof ReviewsRoute
   '/visit': typeof VisitRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/ministries': typeof MinistriesRoute
+  '/reviews': typeof ReviewsRoute
   '/visit': typeof VisitRoute
 }
 export interface FileRoutesById {
@@ -52,20 +60,22 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/ministries': typeof MinistriesRoute
+  '/reviews': typeof ReviewsRoute
   '/visit': typeof VisitRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/about' | '/ministries' | '/visit'
+  fullPaths: '/' | '/about' | '/ministries' | '/reviews' | '/visit'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/about' | '/ministries' | '/visit'
-  id: '__root__' | '/' | '/about' | '/ministries' | '/visit'
+  to: '/' | '/about' | '/ministries' | '/reviews' | '/visit'
+  id: '__root__' | '/' | '/about' | '/ministries' | '/reviews' | '/visit'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
   MinistriesRoute: typeof MinistriesRoute
+  ReviewsRoute: typeof ReviewsRoute
   VisitRoute: typeof VisitRoute
 }
 
@@ -92,6 +102,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof MinistriesRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/reviews': {
+      id: '/reviews'
+      path: '/reviews'
+      fullPath: '/reviews'
+      preLoaderRoute: typeof ReviewsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/visit': {
       id: '/visit'
       path: '/visit'
@@ -106,6 +123,7 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
   MinistriesRoute: MinistriesRoute,
+  ReviewsRoute: ReviewsRoute,
   VisitRoute: VisitRoute,
 }
 export const routeTree = rootRouteImport

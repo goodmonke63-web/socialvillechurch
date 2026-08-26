@@ -71,6 +71,9 @@ export function Footer() {
                 <Link to="/ministries" className="hover:text-burgundy hover:underline">Ministries</Link>
               </li>
               <li>
+                <Link to="/reviews" className="hover:text-burgundy hover:underline">Reviews</Link>
+              </li>
+              <li>
                 <Link to="/visit" className="hover:text-burgundy hover:underline">Plan Your Visit</Link>
               </li>
             </ul>
