@@ -112,9 +112,9 @@ function VisitPage() {
           {/* Map */}
           <div className="space-y-6">
             <div className="overflow-hidden rounded-xl border border-border bg-card shadow-sm">
-              <iframe
+            <iframe
                 title="Socialville Baptist Church location map"
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3078.1234567890123!2d-84.3099999!3d39.3600000!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x88405b1234567890%3A0xabcdef1234567890!2sSocialville%20Baptist%20Church!5e0!3m2!1sen!2sus!4v1600000000000!5m2!1sen!2sus"
+                src="https://maps.google.com/maps?q=Socialville+Baptist+Church,+5946+Socialville-Foster+Rd,+Mason,+OH+45040&output=embed"
                 width="100%"
                 height="400"
                 style={{ border: 0 }}
