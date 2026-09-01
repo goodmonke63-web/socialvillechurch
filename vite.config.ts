@@ -6,10 +6,18 @@
 // You can pass additional config via defineConfig({ vite: { ... }, etc... }) if needed.
 import { defineConfig } from "@lovable.dev/vite-tanstack-config";
 
+// Set STATIC_EXPORT=1 (and NITRO_PRESET=node-server) to prerender all pages to
+// static HTML in dist/client — used by the GitHub Pages workflow, since Pages
+// can only host static files and cannot run the server build.
+const staticExport = process.env.STATIC_EXPORT === "1";
+
 export default defineConfig({
   tanstackStart: {
     // Redirect TanStack Start's bundled server entry to src/server.ts (our SSR error wrapper).
     // nitro/vite builds from this
     server: { entry: "server" },
+    ...(staticExport
+      ? { prerender: { enabled: true, crawlLinks: true } }
+      : {}),
   },
 });
