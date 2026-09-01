@@ -1,6 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { Baby, Clock, Heart, BookOpen, Sparkles, MapPin } from "lucide-react";
 import { ServiceTimes } from "@/components/ServiceTimes";
+import leaderAsset from "@/assets/childrens-church-leader.png.asset.json";
 
 export const Route = createFileRoute("/childrens-church")({
   head: () => ({
@@ -44,8 +45,15 @@ function ChildrensChurchPage() {
       <section className="mx-auto max-w-4xl px-4 py-12 sm:px-6 lg:py-16">
         <div className="overflow-hidden rounded-xl border border-border bg-card p-6 shadow-sm sm:p-10">
           <div className="flex flex-col items-center gap-6 text-center sm:flex-row sm:items-start sm:text-left">
-            <div className="flex h-20 w-20 flex-shrink-0 items-center justify-center rounded-full bg-secondary">
-              <Heart className="h-10 w-10 text-burgundy" />
+            <div className="h-32 w-32 flex-shrink-0 overflow-hidden rounded-full border-4 border-secondary shadow-sm sm:h-40 sm:w-40">
+              <img
+                src={leaderAsset.url}
+                alt="Katie McGee, Children's Church Leader"
+                width={160}
+                height={160}
+                loading="lazy"
+                className="h-full w-full object-cover"
+              />
             </div>
             <div className="space-y-1">
               <p className="text-sm font-medium uppercase tracking-wide text-burgundy">Children's Church Leader</p>
