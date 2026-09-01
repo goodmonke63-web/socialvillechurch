@@ -48,7 +48,7 @@ function ChildrensChurchPage() {
           <div className="flex flex-col items-center gap-6 text-center sm:flex-row sm:items-start sm:text-left">
             <div className="h-32 w-32 flex-shrink-0 overflow-hidden rounded-full border-4 border-secondary shadow-sm sm:h-40 sm:w-40">
               <img
-                src={leaderAsset.url}
+                src={assetUrl(leaderAsset.url)}
                 alt="Katie McGee, Children's Church Leader"
                 width={160}
                 height={160}
