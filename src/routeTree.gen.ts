@@ -11,6 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AboutRouteImport } from './routes/about'
+import { Route as ChildrensChurchRouteImport } from './routes/childrens-church'
 import { Route as MinistriesRouteImport } from './routes/ministries'
 import { Route as ReviewsRouteImport } from './routes/reviews'
 import { Route as VisitRouteImport } from './routes/visit'
@@ -23,6 +24,11 @@ const IndexRoute = IndexRouteImport.update({
 const AboutRoute = AboutRouteImport.update({
   id: '/about',
   path: '/about',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ChildrensChurchRoute = ChildrensChurchRouteImport.update({
+  id: '/childrens-church',
+  path: '/childrens-church',
   getParentRoute: () => rootRouteImport,
 } as any)
 const MinistriesRoute = MinistriesRouteImport.update({
@@ -44,6 +50,7 @@ const VisitRoute = VisitRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/childrens-church': typeof ChildrensChurchRoute
   '/ministries': typeof MinistriesRoute
   '/reviews': typeof ReviewsRoute
   '/visit': typeof VisitRoute
@@ -51,6 +58,7 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/childrens-church': typeof ChildrensChurchRoute
   '/ministries': typeof MinistriesRoute
   '/reviews': typeof ReviewsRoute
   '/visit': typeof VisitRoute
@@ -59,21 +67,32 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/childrens-church': typeof ChildrensChurchRoute
   '/ministries': typeof MinistriesRoute
   '/reviews': typeof ReviewsRoute
   '/visit': typeof VisitRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/about' | '/ministries' | '/reviews' | '/visit'
+  fullPaths:
+    '/' | '/about' | '/childrens-church' | '/ministries' | '/reviews' | '/visit'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/about' | '/ministries' | '/reviews' | '/visit'
-  id: '__root__' | '/' | '/about' | '/ministries' | '/reviews' | '/visit'
+  to:
+    '/' | '/about' | '/childrens-church' | '/ministries' | '/reviews' | '/visit'
+  id:
+    | '__root__'
+    | '/'
+    | '/about'
+    | '/childrens-church'
+    | '/ministries'
+    | '/reviews'
+    | '/visit'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
+  ChildrensChurchRoute: typeof ChildrensChurchRoute
   MinistriesRoute: typeof MinistriesRoute
   ReviewsRoute: typeof ReviewsRoute
   VisitRoute: typeof VisitRoute
@@ -93,6 +112,13 @@ declare module '@tanstack/react-router' {
       path: '/about'
       fullPath: '/about'
       preLoaderRoute: typeof AboutRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/childrens-church': {
+      id: '/childrens-church'
+      path: '/childrens-church'
+      fullPath: '/childrens-church'
+      preLoaderRoute: typeof ChildrensChurchRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/ministries': {
@@ -122,6 +148,7 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
+  ChildrensChurchRoute: ChildrensChurchRoute,
   MinistriesRoute: MinistriesRoute,
   ReviewsRoute: ReviewsRoute,
   VisitRoute: VisitRoute,
