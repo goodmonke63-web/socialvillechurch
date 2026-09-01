@@ -15,6 +15,8 @@ export const Route = createFileRoute("/")({
       { property: "og:description", content: "Welcome to Socialville Baptist Church. Faithfully serving our community since 1962." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
+      { property: "og:image", content: churchPhotoUrl },
+      { name: "twitter:image", content: churchPhotoUrl },
     ],
   }),
   component: HomePage,
@@ -55,6 +57,23 @@ function HomePage() {
             </Link>
           </div>
         </div>
+      </section>
+
+      {/* Church photo */}
+      <section className="mx-auto max-w-5xl px-4 pt-16 sm:px-6 lg:pt-20">
+        <figure className="overflow-hidden rounded-xl border border-border shadow-sm">
+          <img
+            src={churchPhotoUrl}
+            alt="Socialville Baptist Church and its parking lot on Socialville-Foster Road in Mason, Ohio"
+            width={1920}
+            height={896}
+            loading="lazy"
+            className="h-auto w-full object-cover"
+          />
+          <figcaption className="bg-card px-4 py-3 text-center text-sm text-muted-foreground">
+            Our church home on Socialville-Foster Road — you'll find us right across from the water tower.
+          </figcaption>
+        </figure>
       </section>
 
       {/* Welcome intro */}

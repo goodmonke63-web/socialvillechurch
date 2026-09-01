@@ -30,13 +30,22 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      - name: Build website
+      # GitHub Pages can only host static files, so build with the Node preset
+      # and prerender every page to static HTML in dist/client.
+      - name: Build website (static export)
         run: npm run build
+        env:
+          STATIC_EXPORT: "1"
+          NITRO_PRESET: node-server
+
+      # Let GitHub Pages serve the app for client-side routes it has no file for
+      - name: Add SPA fallback
+        run: cp dist/client/index.html dist/client/404.html
 
       - name: Upload website
         uses: actions/upload-pages-artifact@v3
         with:
-          path: ./dist
+          path: ./dist/client
 
   deploy:
     environment:
