@@ -2,6 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { Baby, Clock, Heart, BookOpen, Sparkles, MapPin } from "lucide-react";
 import { ServiceTimes } from "@/components/ServiceTimes";
 import leaderAsset from "@/assets/childrens-church-leader.png.asset.json";
+import { assetUrl } from "@/lib/asset-url";
 
 export const Route = createFileRoute("/childrens-church")({
   head: () => ({

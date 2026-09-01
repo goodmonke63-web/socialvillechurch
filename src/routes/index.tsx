@@ -1,6 +1,10 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ServiceTimes } from "@/components/ServiceTimes";
 import { Heart, MapPin, ArrowRight } from "lucide-react";
+import { assetUrl } from "@/lib/asset-url";
+import churchPhotoAsset from "@/assets/church-street-view.png.asset.json";
+
+const churchPhotoUrl = assetUrl(churchPhotoAsset.url);
 
 export const Route = createFileRoute("/")({
   head: () => ({
