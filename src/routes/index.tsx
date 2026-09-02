@@ -1,6 +1,10 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ServiceTimes } from "@/components/ServiceTimes";
 import { Heart, MapPin, ArrowRight } from "lucide-react";
+import { assetUrl } from "@/lib/asset-url";
+import churchHeroAsset from "@/assets/church-hero.png.asset.json";
+
+const churchHeroUrl = assetUrl(churchHeroAsset.url);
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -11,6 +15,8 @@ export const Route = createFileRoute("/")({
       { property: "og:description", content: "Welcome to Socialville Baptist Church. Faithfully serving our community since 1962." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
+      { property: "og:image", content: churchHeroUrl },
+      { name: "twitter:image", content: churchHeroUrl },
     ],
   }),
   component: HomePage,
@@ -20,13 +26,25 @@ function HomePage() {
   return (
     <main className="min-h-screen">
       {/* Hero */}
-      <section className="relative overflow-hidden bg-cream px-4 py-20 sm:px-6 sm:py-28 lg:py-32">
+      <section className="relative overflow-hidden px-4 py-20 sm:px-6 sm:py-28 lg:py-32">
+        {/* Background image */}
+        <div className="absolute inset-0 -z-10">
+          <img
+            src={churchHeroUrl}
+            alt=""
+            aria-hidden="true"
+            loading="eager"
+            className="h-full w-full object-cover"
+          />
+          {/* Warm overlay for text legibility */}
+          <div className="absolute inset-0 bg-gradient-to-b from-cream/85 via-cream/75 to-cream/90" />
+        </div>
         <div className="mx-auto max-w-4xl text-center">
-          <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-border bg-warm-white px-4 py-1.5 text-sm font-medium text-stone shadow-sm">
+          <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-border bg-warm-white/90 px-4 py-1.5 text-sm font-medium text-stone shadow-sm backdrop-blur-sm">
             <Heart className="h-4 w-4 text-burgundy" />
             Faithfully serving the Mason area since 1962
           </div>
-          <h1 className="font-serif text-4xl font-bold leading-tight text-foreground sm:text-5xl lg:text-6xl">
+          <h1 className="font-serif text-4xl font-bold leading-tight text-foreground drop-shadow-sm sm:text-5xl lg:text-6xl">
             Socialville Baptist Church
           </h1>
           <p className="mx-auto mt-6 max-w-2xl font-serif text-lg italic leading-relaxed text-stone sm:text-xl">
@@ -45,7 +63,7 @@ function HomePage() {
             </Link>
             <Link
               to="/about"
-              className="inline-flex items-center justify-center rounded-md border border-border bg-warm-white px-6 py-3 text-base font-medium text-foreground transition-colors hover:bg-secondary"
+              className="inline-flex items-center justify-center rounded-md border border-border bg-warm-white/90 px-6 py-3 text-base font-medium text-foreground shadow-sm backdrop-blur-sm transition-colors hover:bg-warm-white"
             >
               Our Story
             </Link>
